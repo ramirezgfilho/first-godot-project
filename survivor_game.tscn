@@ -37,3 +37,9 @@ position = Vector2(1595, 663)
 
 [node name="mob" parent="." instance=ExtResource("3_0atr4")]
 position = Vector2(300, 315)
+
+[node name="mob2" parent="." instance=ExtResource("3_0atr4")]
+position = Vector2(1769, 263)
+
+[node name="mob3" parent="." instance=ExtResource("3_0atr4")]
+position = Vector2(1633, 936)
