@@ -6,6 +6,7 @@
 script/source = "extends CharacterBody2D
 
 signal mob_died
+var died_number = 1
 
 var life = 3
 #Aanotação usada que espera a árvore de nodes ser criada para ser executada
@@ -36,7 +37,7 @@ func take_damage():
 		const SMOKE_SCENE = preload(\"res://smoke_explosion/smoke_explosion.tscn\")
 		var smoke = SMOKE_SCENE.instantiate()
 		get_parent().add_child(smoke)
-		smoke.global_position = global_position
+		smoke.global_position = global_position# Replace with function body.
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oik3s"]

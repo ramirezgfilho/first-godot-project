@@ -8,8 +8,20 @@ func spawn_mob():
 	new_mob.global_position = %PathFollow2D.global_position
 	add_child(new_mob)
 
+func _on_mob_died():
+	print("Hello")
+
+#Tempo para spawnar os mobs, 
+#O tempo vai reduzindo até um minimo de 0.1s.
 func _on_timer_timeout():
-	spawn_mob()
+	if %Timer.wait_time > 0.1:
+		%Timer.wait_time -= 0.005
+		print(%Timer.wait_time)
+		spawn_mob()
+	else: 
+		print(%Timer.wait_time)
+		spawn_mob()
+
 
 func _on_player_health_depleted():
 	%GameOver.visible = true
@@ -38,3 +50,5 @@ func _physics_process(delta):
 func _on_score_timer_timeout():
 	score += 1
 
+func _on_child_exiting_tree(mob):
+	score += 10

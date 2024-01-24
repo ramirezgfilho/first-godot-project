@@ -84,7 +84,7 @@ position = Vector2(1661, 675)
 position = Vector2(1595, 663)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.3
+unique_name_in_owner = true
 autostart = true
 
 [node name="GameOver" type="CanvasLayer" parent="."]
@@ -205,6 +205,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 60
 text = "Exit"
 
+[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="timeout" from="CanvasLayer/ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
