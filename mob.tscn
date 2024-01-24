@@ -5,6 +5,8 @@
 [sub_resource type="GDScript" id="GDScript_23w5w"]
 script/source = "extends CharacterBody2D
 
+signal mob_died
+
 var life = 3
 #Aanotação usada que espera a árvore de nodes ser criada para ser executada
 @onready var player = get_node(\"/root/Game/Player\")
@@ -25,8 +27,12 @@ func take_damage():
 	%Slime.play_hurt()
 	
 	if life <= 0:
-		queue_free()
 		
+		mob_died.emit() #Emite o sinal quando morre
+	
+		queue_free() #Remove o mob da cena
+		
+		#Instancia a fumaça na cena na posição do mob.
 		const SMOKE_SCENE = preload(\"res://smoke_explosion/smoke_explosion.tscn\")
 		var smoke = SMOKE_SCENE.instantiate()
 		get_parent().add_child(smoke)
