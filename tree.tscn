@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://d4jjn770nvqmk"]
+[gd_scene load_steps=5 format=3 uid="uid://d4jjn770nvqmk"]
 
+[ext_resource type="Script" path="res://tree.gd" id="1_ufifd"]
 [ext_resource type="Texture2D" uid="uid://b7rhtttevhxtj" path="res://characters/ground_shadow.png" id="1_wspj0"]
 [ext_resource type="Texture2D" uid="uid://caqfk2xng5v5u" path="res://trees/pine_tree.png" id="2_q8ukd"]
 
@@ -7,6 +8,7 @@
 radius = 21.2132
 
 [node name="Tree" type="StaticBody2D"]
+script = ExtResource("1_ufifd")
 
 [node name="GroundShadow" type="Sprite2D" parent="."]
 modulate = Color(0.596078, 0.796078, 0.847059, 1)
@@ -21,3 +23,9 @@ texture = ExtResource("2_q8ukd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -5)
 shape = SubResource("CircleShape2D_xkobs")
+
+[node name="TreeEndTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="TreeEndTimer" to="." method="_on_tree_end_timer_timeout"]

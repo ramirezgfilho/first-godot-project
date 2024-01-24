@@ -1,12 +1,19 @@
 extends Node2D
 
 var score = 0
+var tree_count = 0
 
 func spawn_mob():
 	var new_mob = preload("res://mob.tscn").instantiate()
 	%PathFollow2D.progress_ratio = randf()
 	new_mob.global_position = %PathFollow2D.global_position
 	add_child(new_mob)
+	
+func spawn_tree():
+	var new_tree = preload("res://tree.tscn").instantiate()
+	%PathFollow2D.progress_ratio = randf()
+	new_tree.global_position = %PathFollow2D.global_position
+	add_child(new_tree)
 
 func _on_mob_died():
 	print("Hello")
@@ -22,9 +29,9 @@ func _on_timer_timeout():
 		print(%Timer.wait_time)
 		spawn_mob()
 
-
 func _on_player_health_depleted():
 	%GameOver.visible = true
+	%Score.set_text("Final score: " + str(score))
 	get_tree().paused = true
 
 func _on_restart_button_pressed():
@@ -52,3 +59,8 @@ func _on_score_timer_timeout():
 
 func _on_child_exiting_tree(mob):
 	score += 10
+
+func _on_tree_timer_timeout():
+	spawn_tree()	
+
+
