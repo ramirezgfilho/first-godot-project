@@ -25,6 +25,5 @@ shape = SubResource("CircleShape2D_iwpbl")
 unique_name_in_owner = true
 stream = ExtResource("3_jkgw5")
 attenuation = 3.73213
-panning_strength = 0.32
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -42,7 +42,8 @@ position = Vector2(0, -48)
 
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true
-scale = Vector2(3.64, 4)
+position = Vector2(-3, -32)
+scale = Vector2(4.52, 5.16)
 collision_layer = 0
 collision_mask = 2
 

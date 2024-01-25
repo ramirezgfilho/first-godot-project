@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://d4jjn770nvqmk"]
+[gd_scene load_steps=10 format=3 uid="uid://d4jjn770nvqmk"]
 
 [ext_resource type="Script" path="res://tree.gd" id="1_ufifd"]
 [ext_resource type="Texture2D" uid="uid://b7rhtttevhxtj" path="res://characters/ground_shadow.png" id="1_wspj0"]
+[ext_resource type="PackedScene" uid="uid://x6yvljevftll" path="res://smoke_tree_explosion/smoke_tree_explosion.tscn" id="2_87ps8"]
 [ext_resource type="Texture2D" uid="uid://caqfk2xng5v5u" path="res://trees/pine_tree.png" id="2_q8ukd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xkobs"]
@@ -123,6 +124,8 @@ _data = {
 
 [node name="Tree" type="StaticBody2D"]
 script = ExtResource("1_ufifd")
+
+[node name="SmokeExplosion" parent="." instance=ExtResource("2_87ps8")]
 
 [node name="GroundShadow" type="Sprite2D" parent="."]
 modulate = Color(0.596078, 0.796078, 0.847059, 1)
