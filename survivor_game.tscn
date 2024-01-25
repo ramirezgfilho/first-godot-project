@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b16fyj1lx3bcg"]
+[gd_scene load_steps=6 format=3 uid="uid://b16fyj1lx3bcg"]
 
 [ext_resource type="PackedScene" uid="uid://dn3uju54d45b3" path="res://Player.tscn" id="1_h640c"]
 [ext_resource type="Script" path="res://survivor_game.gd" id="1_ui863"]
 [ext_resource type="Texture2D" uid="uid://bwfv7ha87cm4u" path="res://buttons/pause_button.png" id="2_5dm3b"]
+[ext_resource type="AudioStream" uid="uid://nieqhor4fdmw" path="res://song/songs.wav" id="4_ma6gp"]
 
 [sub_resource type="Curve2D" id="Curve2D_5s3p7"]
 _data = {
@@ -205,6 +206,11 @@ text = "Exit"
 [node name="TreeTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ma6gp")
+volume_db = -23.383
+autoplay = true
 
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_on_pause_button_pressed"]

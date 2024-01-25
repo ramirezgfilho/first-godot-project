@@ -2,6 +2,9 @@ extends Area2D
 
 var travelled_distance = 0 
 
+func _ready():
+	%AudioStreamPlayer2D.playing = true
+
 func _physics_process(delta):
 	const SPEED = 1000
 	const RANGE = 1200

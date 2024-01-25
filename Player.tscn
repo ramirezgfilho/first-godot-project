@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d0m8i0by6l6ey" path="res://gun.tscn" id="3_kjmsa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t7n82"]
-radius = 25.5539
+radius = 42.0476
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a54e7"]
 radius = 10.1925
@@ -32,6 +32,7 @@ script = ExtResource("1_n427j")
 unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -52)
 shape = SubResource("CircleShape2D_t7n82")
 
 [node name="Camera2D" type="Camera2D" parent="."]

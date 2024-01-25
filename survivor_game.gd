@@ -14,19 +14,17 @@ func spawn_tree():
 	%PathFollow2D.progress_ratio = randf()
 	new_tree.global_position = %PathFollow2D.global_position
 	add_child(new_tree)
-
+	
 func _on_mob_died():
-	print("Hello")
+	pass
 
 #Tempo para spawnar os mobs, 
 #O tempo vai reduzindo até um minimo de 0.1s.
 func _on_timer_timeout():
 	if %Timer.wait_time > 0.1:
 		%Timer.wait_time -= 0.005
-		print(%Timer.wait_time)
 		spawn_mob()
 	else: 
-		print(%Timer.wait_time)
 		spawn_mob()
 
 func _on_player_health_depleted():

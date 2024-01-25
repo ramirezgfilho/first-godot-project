@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4jjn770nvqmk"]
+[gd_scene load_steps=9 format=3 uid="uid://d4jjn770nvqmk"]
 
 [ext_resource type="Script" path="res://tree.gd" id="1_ufifd"]
 [ext_resource type="Texture2D" uid="uid://b7rhtttevhxtj" path="res://characters/ground_shadow.png" id="1_wspj0"]
@@ -6,6 +6,120 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xkobs"]
 radius = 21.2132
+
+[sub_resource type="Animation" id="Animation_gvrw2"]
+resource_name = "tree_fall"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PineTree:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 0.435275),
+"update": 0,
+"values": [0.0, 1.5708]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GroundShadow:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GroundShadow:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1, -1), Vector2(10, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_ainwg"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PineTree:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ourlp"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GroundShadow:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PineTree:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PineTree:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GroundShadow:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, -1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ag8u3"]
+_data = {
+"RESET": SubResource("Animation_ourlp"),
+"idle": SubResource("Animation_ainwg"),
+"tree_fall": SubResource("Animation_gvrw2")
+}
 
 [node name="Tree" type="StaticBody2D"]
 script = ExtResource("1_ufifd")
@@ -17,15 +131,22 @@ scale = Vector2(0.807692, 0.807692)
 texture = ExtResource("1_wspj0")
 
 [node name="PineTree" type="Sprite2D" parent="."]
-position = Vector2(0, -62)
 texture = ExtResource("2_q8ukd")
+offset = Vector2(-1, -75)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -5)
 shape = SubResource("CircleShape2D_xkobs")
 
 [node name="TreeEndTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 5.0
 autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_ag8u3")
+}
 
 [connection signal="timeout" from="TreeEndTimer" to="." method="_on_tree_end_timer_timeout"]
