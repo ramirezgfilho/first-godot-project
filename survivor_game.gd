@@ -31,10 +31,8 @@ func _on_timer_timeout():
 	if %Timer.wait_time > 0.1:
 		%Timer.wait_time -= 0.005
 		spawn_mob()
-		print(%Timer.wait_time)
 	else: 
 		spawn_mob()
-		print(%Timer.wait_time)
 
 func _on_player_health_depleted():
 	%GameOver.visible = true

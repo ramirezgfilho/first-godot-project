@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dn3uju54d45b3" path="res://Player.tscn" id="1_h640c"]
 [ext_resource type="Script" path="res://survivor_game.gd" id="1_ui863"]
 [ext_resource type="Texture2D" uid="uid://bwfv7ha87cm4u" path="res://buttons/pause_button.png" id="2_5dm3b"]
-[ext_resource type="AudioStream" uid="uid://nieqhor4fdmw" path="res://song/songs.wav" id="4_ma6gp"]
+[ext_resource type="AudioStream" uid="uid://dxmk21bfr1xbj" path="res://song/music.wav" id="4_ojsx2"]
 
 [sub_resource type="Curve2D" id="Curve2D_5s3p7"]
 _data = {
@@ -225,8 +225,8 @@ wait_time = 0.5
 autostart = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_ma6gp")
-volume_db = -23.383
+stream = ExtResource("4_ojsx2")
+volume_db = -8.243
 autoplay = true
 
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
